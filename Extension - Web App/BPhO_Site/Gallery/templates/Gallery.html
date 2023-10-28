@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge {{ challenge_num }}</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            color: #010209;
+            background-color: #dbdffa;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: large;
+        }
+        select{
+            margin: 10px;
+        }
+        input{
+            margin: 10px;   
+        }
+        #interval{
+            width: 200px;
+        }
+        #interval_label{
+            margin: 10px;
+        }
+        #graph{
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: #010209;
+        }
+        a:hover{
+            color: #f9f4d2;
+        }
+        video{
+            width: 100%;
+        }
+        input[type=submit] {
+            background-color: #691fe0;
+            border: none;
+            color: #dbdffa;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        input[type=submit]:hover {
+            background-color: #4d0cb5;
+        }
+        input[type=range] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        select{
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div>
+    <h1> {% if challenge_num > 1 %} <a href="/challenge/{{ challenge_num | add:'-1' }}">&lt;</a>{% else %}&nbsp;{% endif %} Challenge {{ challenge_num }} {% if challenge_num < 7 %} <a href="/challenge/{{ challenge_num | add:'+1'}}">&gt;</a> {% else%}&nbsp;{% endif %}</h1>
+    <h2>{{ challenge_title }}</h2>
+
+    <!-- each challenge will have its own set of options -->
+    
+    <form action="" method="post" >
+        {% csrf_token %}
+        {% if challenge_num == 7 %}
+        <!-- for challenge 7 -->
+        <!-- select between inner solar system and outer -->
+        <label for="inner_outer">Inner or Outer Solar System</label>
+        <select name="inner_outer" id="inner_outer_c7" required>
+            <option selected disabled value="-">-</option>
+            <option value="inner">Inner</option>
+            <option value="outer">Outer</option>
+            <option value="outer_pluto">Outer with pluto</option>
+        </select>
+        <!-- base on which is chosen show a select of planets -->
+        <label for="planet_inner">Inner planets</label>
+        <select name="planet_inner" id="planet_i_c7" required>
+            <option selected disabled value="-">-</option>
+            <option value="1">Mercury</option>
+            <option value="2">Venus</option>
+            <option value="3">Earth</option>
+            <option value="4">Mars</option>
+        </select>
+        <label for="planet_outer">Outer planets</label>
+        <select name="planet_outer" id="planet_o_c7" required>
+            <option selected disabled value="-">-</option>
+            <option value="1">Jupiter</option>
+            <option value="2">Saturn</option>
+            <option value="3">Uranus</option>
+            <option value="4">Neptune</option>
+        </select>
+        {% elif challenge_num == 6 %}
+        <!-- Challenge 6 -->
+        <!-- a pair of selects for planets -->
+        <label for="planet1">Planet 1:</label>
+        <select name="planet1" id="planet_1_c6" required>
+            <option selected disabled value="-">-</option>
+            <option value="mercury">Mercury</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="saturn">Saturn</option>
+            <option value="uranus">Uranus</option>
+            <option value="neptune">Neptune</option>
+        </select>
+        <label for="planet2">Planet 2:</label>
+        <select name="planet2" id="planet_2_c6" required>
+            <option selected disabled value="-">-</option>
+            <option value="mercury">Mercury</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="saturn">Saturn</option>
+            <option value="uranus">Uranus</option>
+            <option value="neptune">Neptune</option>
+        </select>
+        <label for="interval" id="interval_label">Interval: 3</label>
+        <input type="range" onchange="change('Interval: ')" name="interval" id="interval" min="1" max="10" value="3" step="0.5">
+        {% elif challenge_num == 5 %}
+        <!-- Challenge 5 -->
+        <!-- select a planet -->
+        <label for="planet">Planet:</label>
+        <select name="planet" id="planet_c5" required>
+            <option disabled value="-">-</option>
+            <option value="mercury">Mercury</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="saturn">Saturn</option>
+            <option value="uranus">Uranus</option>
+            <option value="neptune">Neptune</option>
+            <option selected value="pluto">Pluto</option>
+        </select>
+        <label for="interval" id="interval_label">Years: 800</label>
+        <input type="range" onchange="change('Years: ')" name="years" id="interval" min="0" max="1500" value="800" step="10">
+        {% elif challenge_num == 4 %}
+        <!-- Challenge 4 -->
+        <label for="inner_outer">Inner or Outer Solar System</label>
+        <select name="inner_outer" id="inner_outer_c4" required>
+            <option selected disabled value="-">-</option>
+            <option value="inner">Inner</option>
+            <option value="outer">Outer</option>
+            <option value="outer_pluto">Outer with pluto</option>
+        </select>
+        
+        {% elif challenge_num == 3 %}
+        <!-- Challenge 3 -->
+        <label for="inner_outer">Inner or Outer Solar System</label>
+        <select name="inner_outer" id="inner_outer_c4" required>
+            <option selected disabled value="-">-</option>
+            <option value="inner">Inner</option>
+            <option value="outer">Outer</option>
+        </select>
+        {% elif challenge_num == 2 %}
+        <!-- Challenge 2 -->
+        <!-- Inner or outer planets -->
+        <label for="inner_outer">Show</label>
+        <select name="inner_outer" id="inner_outer_c2" required>
+            <option selected disabled value="-">-</option>
+            <option value="all">All</option>
+            <option value="inner">Inner</option>
+            <option value="outer">Outer</option>
+            <option value="outer_pluto">Outer with pluto</option>
+        </select>
+        {% elif challenge_num == 1 %}
+        <!-- Challenge 1 -->
+        {% endif %}
+        
+        <input type="submit" id="submit" value="Generate">
+    </form>
+    <div style="display: flex;flex-direction: column;align-items: center;">
+        {{ graph_html | safe}}
+        {% if path_to_vid %}
+        <video autoplay controls>
+            <source src="/static/{{ path_to_vid }}" type="video/mp4">
+        </video>
+        {% endif %}
+    </div>
+    </div>
+</body>
+<script>
+    // hide the group of selects that are not needed
+    // get the selects
+    // document.addEventListener('DOMContentLoaded', function(){
+    //     console.log("loaded")
+    //     let interval = document.getElementById('interval')
+    //     document.getElementById('interval_label').innerHTML = "Interval: " + interval.value;
+    // })
+
+    function change(text){
+        console.log("change")
+        let interval = document.getElementById('interval')
+        document.getElementById('interval_label').innerHTML = text + interval.value;
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('select').forEach(select => {
+            if (select.value == "-"){
+                    console.log("disabled")
+                    document.getElementById('submit').setAttribute('disabled', "disabled");
+                }else{
+                    document.getElementById('submit').removeAttribute('disabled');
+            }
+            select.addEventListener('change', () => {
+                console.log("change")
+                if (select.value == "-"){
+                    console.log("disabled")
+                    document.getElementById('submit').setAttribute('disabled', "disabled");
+                }else{
+                    document.getElementById('submit').removeAttribute('disabled');
+                }
+                console.log(select.value)
+            })
+        })
+    })
+
+</script>
+</html>

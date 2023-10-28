@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: #010209;
+            background-color: #dbdffa;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: large;
+        }
+        #container{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .grid-item{
+            background-color: #691fe0;
+            color: #dbdffa;
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Acknowledgements</h1>
+    <p>The following softwares/libraries/languages/frameworks/websites were used to test, run and present this BPhO Computational Challenge project</p>
+    <div id="container">
+        <!-- microsoft excel -->
+        <div class="grid-item">
+            <a href="https://www.microsoft.com/en-gb/microsoft-365/excel"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/2203px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png" alt="Microsoft Excel logo" width="200px"></a>
+        </div>
+        <!-- Django -->
+        <div class="grid-item">
+            <a href="https://www.djangoproject.com/"><img src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django logo" width="200px"></a>
+        </div>
+        <!-- Python -->
+        <div class="grid-item">
+            <a href="https://www.python.org/"><img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python logo" width="200px"></a>
+        </div>
+        <!-- numpy -->
+        <div class="grid-item">
+            <a href="https://numpy.org/"><img src="https://raw.githubusercontent.com/numpy/numpy/250e1479ce342d9d7ab8a592508f6ce892d4c98b/branding/logo/primary/numpylogo.svg" alt="Numpy logo" width="200px"></a>
+        </div>
+        <!-- bokeh -->
+        <div class="grid-item">
+            <a href="https://bokeh.org/"><img src="https://static.bokeh.org/branding/logos/bokeh-logo.svg" alt="Bokeh logo" width="200px"></a>
+        </div>
+        <!-- matplotlib -->
+        <div class="grid-item">
+            <a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg" alt="Matplotlib logo" width="200px"></a>
+        </div>
+        <!-- Stack overflow -->
+        <div class="grid-item">
+            <a href="https://stackoverflow.com/"><img src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" alt="Stack overflow logo" width="200px"></a>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

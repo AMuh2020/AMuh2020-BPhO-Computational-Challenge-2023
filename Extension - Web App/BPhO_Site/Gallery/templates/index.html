@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            color: #010209;
+            background-color: #dbdffa;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: large;
+        }
+        #container{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        #container{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .grid-item{
+            background-color: #691fe0;
+            color: #dbdffa;
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 30px 20px;
+        }
+        .grid-item:hover{
+            background-color: #4d0cb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to @AMuh2020's BPhO computational challenge 2023 website</h1>
+    <h2>Click on a challenge to get started</h2>
+    <div id="container">
+        {%for i in '1234567'|make_list %}
+        <a style="text-decoration: none;" href="/challenge/{{i}}"><div class="grid-item">Challenge #{{i}}</div></a>
+        {%endfor%}
+    </div>
+    <!-- link to acknowledgements page -->
+    <a href="/acknowledgements">Acknowledgements</a>
+</body>
+</html>
